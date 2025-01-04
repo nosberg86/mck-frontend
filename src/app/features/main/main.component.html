@@ -12,7 +12,7 @@
         <img
           src="../../assets/LogoWithoutLetters100.png"
           width="50px"
-          style="margin-left: 22px;"
+          style="margin-left: 22px"
         />
       </a>
     </mat-toolbar>
@@ -30,10 +30,16 @@
         </mat-icon>
         {{ item.title }}
       </a>-->
-      <app-menu-list-item *ngFor="let item of myAdminRoutes" [item]="item"></app-menu-list-item>
+      <app-menu-list-item
+        *ngFor="let item of myAdminRoutes"
+        [item]="item"
+      ></app-menu-list-item>
     </mat-nav-list>
     <mat-nav-list *ngIf="!isAdmin">
-      <app-menu-list-item *ngFor="let item of myUserRoutes" [item]="item"></app-menu-list-item>
+      <app-menu-list-item
+        *ngFor="let item of myUserRoutes"
+        [item]="item"
+      ></app-menu-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -61,7 +67,6 @@
         </mat-chip>
       </mat-chip-listbox>
 
-
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="getMyProfile()">
           <mat-icon>person</mat-icon>
@@ -76,7 +81,7 @@
           <span translate>Security</span>
         </button>
         <mat-divider></mat-divider>
-        <button mat-menu-item (click)="logout()" aria-label="Logout">
+        <button mat-menu-item (click)="signOut()" aria-label="Logout">
           <mat-icon>logout</mat-icon>
           <span translate>Logout</span>
         </button>
