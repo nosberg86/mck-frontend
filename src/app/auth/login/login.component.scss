@@ -1,0 +1,23 @@
+.success-snackbar1 {
+  --mdc-snackbar-container-color: green !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+  --mat-mdc-snack-bar-button-color: white !important;
+  white-space: pre-wrap
+}
+
+.success-snackbar {
+  --mdc-snackbar-container-color: green;
+  --mat-mdc-snack-bar-button-color: yellow;
+  --mdc-snackbar-supporting-text-color: red;
+}
+.warning-snackbar {
+  background: orange;
+  color: white ;
+  white-space: pre-wrap
+}
+
+.error-snackbar {
+  @apply bg-red-600;
+  color: white ;
+  white-space: pre-wrap
+}

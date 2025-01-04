@@ -1,0 +1,88 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)"
+  >
+    <mat-toolbar>
+      <a href="/#/app/">
+        <img
+          src="../../assets/LogoWithoutLetters100.png"
+          width="50px"
+          style="margin-left: 22px;"
+        />
+      </a>
+    </mat-toolbar>
+    <mat-nav-list *ngIf="isAdmin">
+      <!--<a
+        *ngFor="let item of myAdminRoutes"
+        mat-list-item
+        routerLinkActive
+        #routerLinkActiveInstance="routerLinkActive"
+        [class.list-item-active]="routerLinkActiveInstance.isActive"
+        [routerLink]="[item.route]"
+      >
+        <mat-icon matListIcon class="app-nav-list-icon">
+          {{ item.icon }}
+        </mat-icon>
+        {{ item.title }}
+      </a>-->
+      <app-menu-list-item *ngFor="let item of myAdminRoutes" [item]="item"></app-menu-list-item>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="!isAdmin">
+      <app-menu-list-item *ngFor="let item of myUserRoutes" [item]="item"></app-menu-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <h1 class="example-app-name">
+        mar<span class="secondary-color">ck</span>een
+      </h1>
+      <span class="example-spacer"></span>
+
+      <mat-chip-listbox aria-label="Dog selection">
+        <mat-chip color="primary" selected [matMenuTriggerFor]="menu">
+          <mat-chip-avatar>
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-chip-avatar>
+          <span class="mini-text">{{ userName }}</span>
+          <mat-icon matSuffix>expand_more</mat-icon>
+        </mat-chip>
+      </mat-chip-listbox>
+
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="getMyProfile()">
+          <mat-icon>person</mat-icon>
+          <span translate>My Profile</span>
+        </button>
+        <button mat-menu-item *ngIf="isAdmin">
+          <mat-icon>support</mat-icon>
+          <span translate>Support and Tickets</span>
+        </button>
+        <button mat-menu-item *ngIf="isAdmin">
+          <mat-icon>verified_user</mat-icon>
+          <span translate>Security</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()" aria-label="Logout">
+          <mat-icon>logout</mat-icon>
+          <span translate>Logout</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

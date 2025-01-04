@@ -3,6 +3,21 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@shared/*": ["src/app/shared/*"],
+      "@features/*": ["src/app/features/*"],
+      "@env/*": ["src/environments/*"],
+      "@components/*": ["src/app/components/*"],
+      "@core/*": ["src/app/core/*"],
+      "@auth/*": ["src/app/auth/*"],
+      "@layout/*": ["src/app/layout/*"],
+      "@models/*": ["src/app/models/*"],
+      "@utils/*": ["src/app/utils/*"],
+      "@public/*": ["public/*"],
+      "@assets/*": ["assets/*"],
+      "@services/*": ["src/app/services/*"]
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -15,7 +30,7 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
